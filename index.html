@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Монтажная</title><style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#121110;color:#f4efe8;
+font:16px/1.5 -apple-system,system-ui,sans-serif;padding:20px;box-sizing:border-box}
+form{width:min(360px,100%);background:#1b1a17;border:1px solid rgba(255,236,214,.1);border-radius:20px;padding:26px}
+h1{font-size:20px;margin:0 0 4px}p{color:#a59c90;margin:0 0 18px;font-size:14px}
+input[type=password]{width:100%;box-sizing:border-box;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,236,214,.16);
+background:#23211d;color:#f4efe8;font-size:16px}
+label{display:flex;gap:8px;align-items:center;color:#a59c90;font-size:14px;margin:12px 0 16px}
+button{width:100%;padding:13px;border:0;border-radius:12px;background:#e8825a;color:#121110;font-weight:700;font-size:16px;cursor:pointer}
+.err{color:#ef7b7b;font-size:14px;min-height:20px;margin-top:10px}</style></head><body>
+<form id="f"><h1>Монтажная</h1><p>Закрытая страница. Введи пароль.</p>
+<input type="password" id="pw" autocomplete="current-password" placeholder="Пароль" required>
+<label><input type="checkbox" id="rm" checked> Запомнить на этом устройстве</label>
+<button type="submit">Открыть</button><div class="err" id="err"></div></form>
+<script>
+window.VBASE="v/";
+(()=>{const E={salt:"o1PIkuKsuxYnwEHYDwHEIg==",iter:200000,data:"lRqAS1WibuumiIqRr+vq8ZCnS2sqxuTPnHuZekDhNurmwzw3LnSBhFbvdtdMI5DdU0lgiocrbKOTaqH/CoQbMZ8F4orKIUNHL5g7ApYnRjOJFULgoZvh4Yefpb5Ko2lcAjrxpwX0j9Jctgxow5IQeJJPqrKUAkMMqAldV2b8l98Nyrx6aOsA85Pd7+UZGhWr7XYAYpb/Y8JOWtZPBFTxIj/PidU0P2hW3UkZmAa13MEoErbSfV2NqdenmVqj+yEVR1WNt38at52rhn3eTKcO5ZDSstf+b5+qmWTStiNwz4P74Bh0BM8+UXV7wqHoGc2RuOPM5r/aHSt5VHnagqVeoJmoSnUCOytKpyQvNT8fNa37wytZLdVSr/knA8ZO2wIGdDixGJbcB6vLEuX8xwFzmSnzP+gp2JSgWm9lS/p2om9Rf9ZTWOY8yXy/ricuH/oyB3pp4bkR0mTpiS0rQvfJ09pfiinDPYBOQDPv5hDPeqvNsaqBbGlah+ctHrtqZFfU4tWD/2acrfzrJ14/QKPeNToHhFg+YiQ2XXrw+a4GmbBOqiLLCWKUu5w471GkQcBTaIdKajFUvWaUUeQCq5MW5MCmwHXOuqjQZuaK47bJeIriitemWXltJZFznJWDDd/T+45WPp56X2Pgu7T0mmo/fWuygP3DPBZlH6gtYRKRchLpcn1smdyfqedKCjzLtuCwEagBG0lDRF03bzyQiL6wcKJX35f4/FXMhz6G4mIC3zFZZhvquXoNcwZwL0TXUEBAHB1SaKs9rEdPkiNz1vwbGfKbulI13G6Xyjj8f27jPkS3xEgnWbg+YUy2hXhd4sfpVNZ9EoqiYinf0Mjhmh8/L9IITewrW755v05CxTGD0r9nJlthvxDj7+yMARqpTELvvJGSY6q/q65wAFKMRRC5YF9zCTnvvHPNJ0Eq1Ji2RePQbj/KmmMIVVF8fDgMu46Kl4GzeYG0X0iNIdH9UM0kVkrcAQNg543Xoml7XOFE07fgIOD5Bpd7l1m3vV9+YCFZSJ62kzh2gYCGJeU6SNMU3+N4N3RpvtLjsWx8mUdu/z2HSulRty6NQzvGw37StBBUInhhLHSf4I4znNS0ZsYIJxTVgkP3dw6AM22ZzGoTxjd/EdD45w3Kr/wGiJCDl3oJL8R1S3M0wGeNFMjjuP9zvP5QT7zWWlaF2nYnpoduyBKOo5fJ7ePXOKaAOpqJts1cfuHdMku0vafTaT2cyuNrVMD7MiCp4od/fY0iume2viNv9opbqaafCI/V7inCaf4cjkQrBQtTUGq62GWxOB35CPtKzvygroqBneSVxDdBbC5WCk5aGsv2/SKYX1hB5uOJvHjQxYBMJDWMp6AYSB3UVzZvl6fOXSQqNeObPEdOd+EbSVY8XMzI4nD72ZfFmL88pMkr4FJd5A1q4FSX8mGNHtFAZKupI2xMpk+45KjLIAhIAkfo+oTKqaNlqwmrqlFEj4/oDA=="};
+const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0)),u64=a=>btoa(String.fromCharCode(...a));
+async function show(raw){const k=await crypto.subtle.importKey('raw',raw,'AES-GCM',false,['decrypt']);const d=b64(E.data);
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:d.slice(0,12)},k,d.slice(12));
+  const doc=new DOMParser().parseFromString(new TextDecoder().decode(pt),'text/html');
+  document.replaceChild(document.adoptNode(doc.documentElement),document.documentElement);
+  for(const o of [...document.querySelectorAll('script')]){const n=document.createElement('script');n.textContent=o.textContent;o.replaceWith(n);}
+  if(location.hash){const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el)el.scrollIntoView();}}
+async function derive(pw){const b=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveBits']);
+  return new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',salt:b64(E.salt),iterations:E.iter,hash:'SHA-256'},b,256));}
+const saved=sessionStorage.getItem('mk')||localStorage.getItem('mk');
+if(saved){document.getElementById('f').style.visibility='hidden';
+  show(b64(saved)).catch(()=>{localStorage.removeItem('mk');sessionStorage.removeItem('mk');document.getElementById('f').style.visibility='visible';});}
+document.getElementById('f').addEventListener('submit',async ev=>{ev.preventDefault();const err=document.getElementById('err');err.textContent='Проверяю…';
+  const remember=document.getElementById('rm').checked;
+  try{const raw=await derive(document.getElementById('pw').value);await show(raw);const r=u64(raw);
+    sessionStorage.setItem('mk',r);if(remember)localStorage.setItem('mk',r);}
+  catch(e){err.textContent='Неверный пароль';}});
+})();
+</script></body></html>
